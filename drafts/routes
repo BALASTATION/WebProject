@@ -1,0 +1,72 @@
+Карта страниц:
+/
+├── /catalog
+│    ├── /catalog/:categorySlug
+│    └── /catalog/:categorySlug/:subcategorySlug
+│
+├── /product/:productId
+│
+├── /cart
+├── /checkout
+│
+├── /login
+├── /register
+│
+├── /account
+│    ├── /account/profile
+│    ├── /account/orders
+│    │    └── /account/orders/:orderId
+│    └── /account/addresses
+│
+├── /promotions
+├── /about
+├── /delivery
+├── /contacts
+│
+└── /admin
+     ├── /admin/orders
+     │    └── /admin/orders/:orderId
+     ├── /admin/products
+     │    ├── /admin/products/new
+     │    └── /admin/products/:productId/edit
+     ├── /admin/categories
+     ├── /admin/promotions
+     └── /admin/users
+
+
+Список маршрутов:
+
+Публичные маршруты (для всех)
+/ - Главная страница
+/catalog - Каталог товаров
+/catalog/:categorySlug - Товары категории
+/catalog/:categorySlug/:subcategorySlug - Товары подкатегории
+/product/:productId - Страница товара
+/cart - Корзина
+/promotions - Акции
+/about - О компании
+/delivery - Доставка и оплата
+/contacts - Контакты
+
+Маршруты аутентификации
+/login - Страница входа
+/register - Страница регистрации
+
+Защищенные маршруты (требуют авторизации пользователя)
+/checkout - Оформление заказа
+/account - Личный кабинет
+/account/profile - Профиль пользователя
+/account/orders - История заказов
+/account/orders/:orderId - Детали заказа
+/account/addresses - Управление адресами
+
+Административные маршруты (требуют роли Manager/Admin)
+/admin - Панель управления
+/admin/orders - Список заказов
+/admin/orders/:orderId - Детали заказа
+/admin/products - Список товаров
+/admin/products/new - Создание товара
+/admin/products/:productId/edit - Редактирование товара
+/admin/categories - Управление категориями
+/admin/promotions - Управление акциями
+/admin/users - Управление пользователями

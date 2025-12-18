@@ -387,3 +387,89 @@ footer {
 .filter-btn:hover {
     background: #c0392b;
 }
+
+
+/* АДАПТИВНОСТЬ */
+
+@media (max-width: 1024px) {
+    .categories, .products-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 колонки вместо 4 */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column; /* Элементы шапки друг под другом */
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .search-bar {
+        width: 100%;
+        order: 3; /* Поиск уходит вниз в мобильной шапке */
+    }
+
+    .nav-menu {
+        flex-wrap: wrap; /* Меню переносится на новые строки */
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .nav-menu a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .slider {
+        height: 250px;
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для категорий */
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для товаров */
+        gap: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* Футер в 2 колонки */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .categories {
+        grid-template-columns: 1fr; /* Категории в одну колонку */
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr; /* Товары в одну колонку */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* Футер в одну колонку */
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}

@@ -129,6 +129,7 @@
     const container = document.getElementById('products-container');
     container.innerHTML = '';
     items.forEach(product => {
+      console.log(product);
       const card = document.createElement('div');
       card.className = 'product-card';
       card.innerHTML = `
@@ -160,7 +161,6 @@
     renderProducts(filtered);
   }
 
-  // Поиск в шапке
   document.getElementById('catalog-search').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     const filtered = allProducts.filter(p => p.name.toLowerCase().includes(term));

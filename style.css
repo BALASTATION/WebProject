@@ -324,3 +324,66 @@ footer {
     border-top: 1px solid #34495e;
     color: #bdc3c7;
 }
+
+/* --- Стили для фильтров в каталоге --- */
+.sidebar h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.8rem;
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #34495e;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+.sidebar ul li a:hover {
+    color: #e74c3c;
+    padding-left: 5px; /* Эффект смещения при наведении */
+}
+
+.price-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price-filter input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filter-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.filter-btn:hover {
+    background: #c0392b;
+}

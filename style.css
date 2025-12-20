@@ -4,8 +4,12 @@
     box-sizing: border-box;
 }
 
+/* 🎨 Обновление: Устанавливаем шрифт Montserrat */
 body {
-    font-family: 'Arial', sans-serif;
+    /* ОБЯЗАТЕЛЬНО: Не забудьте добавить в <head> HTML ссылку на Google Fonts:
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    */
+    font-family: 'Montserrat', Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f5f5f5;
@@ -32,10 +36,12 @@ header {
     margin-bottom: 1rem;
 }
 
+/* 🎨 Обновление: Более жирный и выразительный логотип */
 .logo {
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 700; /* Жирный (Bold) */
     color: #e74c3c;
+    letter-spacing: 1px; /* Немного разносим буквы */
 }
 
 .search-bar {
@@ -49,6 +55,7 @@ header {
     border: none;
     border-radius: 25px;
     padding-left: 3rem;
+    font-family: inherit; /* Используем Montserrat для ввода */
 }
 
 .search-bar::before {
@@ -65,20 +72,35 @@ header {
     align-items: center;
 }
 
+.header-actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
 .cart,
 .login {
+    /* Добавляем это свойство, чтобы убрать подчеркивание */
+    text-decoration: none;
+
+    /* Стили, которые мы добавили ранее для заметности: */
+    background: #e74c3c;
+    color: white;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .cart:hover,
 .login:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #c0392b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 nav {
@@ -89,14 +111,22 @@ nav {
     display: flex;
     list-style: none;
     gap: 2rem;
+
+    /* НОВОЕ: Эти стили имитируют .container для выравнивания */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Центрирование меню */
 }
 
+/* 🎨 Обновление: Полужирный и заглавные буквы для навигации */
 .nav-menu a {
     color: white;
     text-decoration: none;
     padding: 1rem 0;
     display: block;
     transition: color 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .nav-menu a:hover {
@@ -114,12 +144,16 @@ nav {
     color: white;
     font-size: 2rem;
     text-align: center;
+    font-weight: 700; /* Очень жирный для привлечения внимания */
 }
 
+/* 🎨 Обновление: Полужирный для заголовков секций */
 .section-title {
     font-size: 2rem;
     margin: 2rem 0 1rem 0;
     color: #2c3e50;
+    font-weight: 600;
+    text-transform: uppercase; /* Заголовки заглавными буквами */
 }
 
 .categories {
@@ -146,6 +180,12 @@ nav {
 .category-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+/* 🎨 Обновление: Стиль заголовка категории */
+.category-card h3 {
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .products-grid {
@@ -180,13 +220,20 @@ nav {
     padding: 1.5rem;
 }
 
+/* 🎨 Обновление: Стиль заголовка товара */
+.product-card h3 {
+    font-weight: 600;
+    margin-top: 0;
+}
+
 .product-price {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700; /* Жирный для цены */
     color: #e74c3c;
     margin: 0.5rem 0;
 }
 
+/* 🎨 Обновление: Полужирный и заглавные буквы для кнопки */
 .add-to-cart {
     background: #e74c3c;
     color: white;
@@ -197,6 +244,8 @@ nav {
     width: 100%;
     font-size: 1rem;
     transition: background 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .add-to-cart:hover {
@@ -217,9 +266,12 @@ footer {
     margin-bottom: 2rem;
 }
 
+/* 🎨 Обновление: Более выразительные заголовки в футере */
 .footer-column h3 {
     margin-bottom: 1rem;
     color: #e74c3c;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .footer-column ul {
@@ -252,6 +304,7 @@ footer {
     margin-bottom: 0.5rem;
     border: none;
     border-radius: 5px;
+    font-family: inherit; /* Используем Montserrat для ввода */
 }
 
 .newsletter button {
@@ -262,6 +315,7 @@ footer {
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    font-weight: 600;
 }
 
 .footer-bottom {
@@ -269,4 +323,153 @@ footer {
     padding-top: 2rem;
     border-top: 1px solid #34495e;
     color: #bdc3c7;
+}
+
+/* --- Стили для фильтров в каталоге --- */
+.sidebar h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.8rem;
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: #34495e;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+.sidebar ul li a:hover {
+    color: #e74c3c;
+    padding-left: 5px; /* Эффект смещения при наведении */
+}
+
+.price-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price-filter input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filter-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.filter-btn:hover {
+    background: #c0392b;
+}
+
+
+/* АДАПТИВНОСТЬ */
+
+@media (max-width: 1024px) {
+    .categories, .products-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 колонки вместо 4 */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column; /* Элементы шапки друг под другом */
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .search-bar {
+        width: 100%;
+        order: 3; /* Поиск уходит вниз в мобильной шапке */
+    }
+
+    .nav-menu {
+        flex-wrap: wrap; /* Меню переносится на новые строки */
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .nav-menu a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .slider {
+        height: 250px;
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для категорий */
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для товаров */
+        gap: 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* Футер в 2 колонки */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .categories {
+        grid-template-columns: 1fr; /* Категории в одну колонку */
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr; /* Товары в одну колонку */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* Футер в одну колонку */
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
 }

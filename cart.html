@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <script src="auth-helper.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Корзина - СтройМаг</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cart-container {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+
+    .cart-items {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+      gap: 1.5rem;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border-radius: 5px;
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+    }
+
+    .cart-item-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .cart-item-price {
+      color: #e74c3c;
+      font-weight: 700;
+    }
+
+    .cart-quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      background: #ecf0f1;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .cart-summary {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 20px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .summary-total {
+      border-top: 2px solid #f5f5f5;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #2c3e50;
+    }
+
+    .remove-btn {
+      color: #95a5a6;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.8rem;
+      text-decoration: underline;
+    }
+
+    .remove-btn:hover {
+      color: #e74c3c;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="header-top">
+      <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">СТРОЙМАГ</a></div>
+      <div class="search-bar">
+        <input type="text" placeholder="Поиск товаров...">
+      </div>
+      <div class="header-actions">
+        <a href="cart.html" class="cart">Корзина (3)</a>
+        <a href="login.html" class="login">Войти</a>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">ГЛАВНАЯ</a></li>
+        <li><a href="catalog.html">КАТАЛОГ</a></li>
+        <li><a href="promotions.html">АКЦИИ</a></li>
+        <li><a href="delivery.html">ДОСТАВКА</a></li>
+        <li><a href="contacts.html">КОНТАКТЫ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="section-title">ВАША КОРЗИНА</h2>
+
+  <div class="cart-container">
+    <div class="cart-items">
+      <div class="cart-item">
+        <div class="cart-item-img">🛠️</div>
+        <div class="cart-item-info">
+          <h3>Дрель профессиональная</h3>
+          <p class="cart-item-price">500 р.</p>
+          <button class="remove-btn">Удалить</button>
+        </div>
+        <div class="cart-quantity">
+          <button class="qty-btn">-</button>
+          <span>1</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <div class="cart-item-img">🔋</div>
+        <div class="cart-item-info">
+          <h3>Шуруповерт аккумуляторный</h3>
+          <p class="cart-item-price">100 р.</p>
+          <button class="remove-btn">Удалить</button>
+        </div>
+        <div class="cart-quantity">
+          <button class="qty-btn">-</button>
+          <span>2</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="cart-summary">
+      <h3>ИТОГО</h3>
+      <div class="summary-row" style="margin-top: 1.5rem;">
+        <span>Товары (3)</span>
+        <span>700 р.</span>
+      </div>
+      <div class="summary-row">
+        <span>Доставка</span>
+        <span style="color: #2ecc71;">Бесплатно</span>
+      </div>
+      <div class="summary-row summary-total">
+        <span>К оплате</span>
+        <span>700 р.</span>
+      </div>
+      <button class="add-to-cart" style="margin-top: 1rem;">Оформить заказ</button>
+      <a href="catalog.html" style="display: block; text-align: center; margin-top: 1rem; color: #666; text-decoration: none; font-size: 0.9rem;">Вернуться к покупкам</a>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2025 СтройМаг. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

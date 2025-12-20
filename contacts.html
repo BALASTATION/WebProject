@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <script src="auth-helper.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СтройМаг - Контакты</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧱</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-info, .feedback-form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h3, .feedback-form h3 {
+      color: #e74c3c;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #f5f5f5;
+      padding-bottom: 0.5rem;
+    }
+
+    .contact-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #2c3e50;
+    }
+
+    .map-placeholder {
+      height: 300px;
+      background: #bdc3c7;
+      border-radius: 5px;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #666;
+    }
+
+    /* Стили для формы обратной связи */
+    .feedback-form input[type="text"],
+    .feedback-form input[type="email"],
+    .feedback-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    .feedback-form textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    .feedback-form button {
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+
+    .feedback-form button:hover {
+      background: #34495e;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="header-top">
+      <div class="logo">СТРОЙМАГ</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Поиск товаров...">
+      </div>
+      <div class="header-actions">
+        <a href="cart.html" class="cart">Корзина (3)</a>
+        <a href="login.html" class="login">Войти</a>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">ГЛАВНАЯ</a></li>
+        <li><a href="catalog.html">КАТАЛОГ</a></li>
+        <li><a href="promotions.html">АКЦИИ</a></li>
+        <li><a href="delivery.html">ДОСТАВКА</a></li>
+        <li><a href="contacts.html">КОНТАКТЫ</a></li> </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h2 class="section-title">СВЯЖИТЕСЬ С НАМИ</h2>
+
+  <div class="contacts-grid">
+    <div class="contact-info">
+      <h3>Контактная Информация</h3>
+      <div class="contact-item">
+        <strong>Адрес офиса/склада</strong>
+        <p>г. Гродно, ул. Строителей, д. 10 (Склад 5)</p>
+      </div>
+      <div class="contact-item">
+        <strong>Телефон</strong>
+        <p><a href="tel:+375-29-232-31-54">+375-29-232-31-54</a></p>
+      </div>
+      <div class="contact-item">
+        <strong>Email</strong>
+        <p><a href="mailto:info@stroymag.by">info@stroymag.by</a></p>
+      </div>
+      <div class="contact-item">
+        <strong>Время работы</strong>
+        <p>Пн-Пт: 9:00 – 18:00<br>Сб: 10:00 – 15:00<br>Вс: Выходной</p>
+      </div>
+      <div class="map-placeholder">
+
+        Здесь будет карта
+      </div>
+    </div>
+
+    <div class="feedback-form">
+      <h3>Форма Обратной Связи</h3>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="email" name="email" placeholder="Ваш Email" required>
+        <input type="text" name="subject" placeholder="Тема сообщения" required>
+        <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+        <button type="submit">Отправить Сообщение</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>О компании</h3>
+        <ul>
+          <li><a href="#">О нас</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="delivery.html">Доставка и оплата</a></li>
+          <li><a href="#">Гарантия</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Помощь</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Возврат товара</a></li>
+          <li><a href="#">Оптовым клиентам</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Мы в соцсетях</h3>
+        <div class="social-links">
+          <a href="#">VK</a>
+          <a href="#">Telegram</a>
+          <a href="#">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-column newsletter">
+        <h3>Подписка на новости</h3>
+        <input type="email" placeholder="Ваш email">
+        <button>Подписаться</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 СтройМаг. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

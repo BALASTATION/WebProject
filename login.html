@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация - СтройМаг</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧱</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            color: #e74c3c;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .auth-form button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .auth-form button:hover {
+            background: #c0392b;
+        }
+
+        .auth-message {
+            text-align: center;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background-color: #fee;
+            color: #c33;
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 1px solid #fcc;
+            display: none;
+        }
+
+        .success-message {
+            background-color: #dfd;
+            color: #3a3;
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 1px solid #afa;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">СТРОЙМАГ</a></div>
+                <div class="header-actions">
+                    <a href="index.html" class="cart">На главную</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth-container">
+            <div id="error-message" class="error-message"></div>
+            <div id="success-message" class="success-message"></div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-form="login">ВХОД</button>
+                <button class="auth-tab" data-form="register">РЕГИСТРАЦИЯ</button>
+            </div>
+
+            <!-- Форма входа -->
+            <form id="login-form" class="auth-form active">
+                <input type="email" id="login-email" name="email" placeholder="Email" required>
+                <input type="password" id="login-password" name="password" placeholder="Пароль" required>
+                <button type="button" onclick="submitLogin()">ВОЙТИ</button>
+                <p class="auth-message">Нет аккаунта? <a href="#" onclick="switchToRegister()">Зарегистрируйтесь</a></p>
+            </form>
+
+            <!-- Форма регистрации -->
+            <form id="register-form" class="auth-form">
+                <input type="text" id="register-name" name="name" placeholder="Имя" required>
+                <input type="email" id="register-email" name="email" placeholder="Email" required>
+                <input type="password" id="register-password" name="password" placeholder="Пароль" required>
+                <input type="password" id="register-confirm-password" name="confirm-password" placeholder="Повторите пароль" required>
+                <button type="button" onclick="submitRegister()">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                <p class="auth-message">Уже есть аккаунт? <a href="#" onclick="switchToLogin()">Войдите</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2025 СтройМаг. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // переключение между вкладками
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const formId = tab.getAttribute('data-form');
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${formId}-form`).classList.add('active');
+                
+                hideMessages();
+            });
+        });
+        
+        function switchToRegister() {
+            document.querySelector('.auth-tab[data-form="register"]').click();
+        }
+        
+        function switchToLogin() {
+            document.querySelector('.auth-tab[data-form="login"]').click();
+        }
+        
+        function showError(message) {
+            const errorElement = document.getElementById('error-message');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            
+            document.getElementById('success-message').style.display = 'none';
+        }
+        
+        function showSuccess(message) {
+            const successElement = document.getElementById('success-message');
+            successElement.textContent = message;
+            successElement.style.display = 'block';
+
+            document.getElementById('error-message').style.display = 'none';
+        }
+        
+        function hideMessages() {
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+        }
+        
+        function submitLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (!email || !password) {
+                showError('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            })
+            .then(response => {
+                if (response.ok) {
+                    const username = email.split('@')[0]; 
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    showSuccess('Вход выполнен успешно! Перенаправление...');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else if (response.status === 401) {
+                    response.text().then(text => {
+                        showError(text || 'Неверный email или пароль');
+                    });
+                } else {
+                    showError('Ошибка сервера. Попробуйте позже.');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showError('Ошибка сети. Проверьте подключение к интернету.');
+            });
+        }
+        
+        function submitRegister() {
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (!name || !email || !password || !confirmPassword) {
+                showError('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showError('Пароли не совпадают');
+                return;
+            }
+            
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&confirm-password=${encodeURIComponent(confirmPassword)}`
+            })
+            .then(response => {
+                if (response.ok) {
+                    localStorage.setItem('username', name);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    showSuccess('Регистрация прошла успешно! Перенаправление...');
+
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else if (response.status === 409) {
+                    response.text().then(text => {
+                        showError(text || 'Пользователь с таким email уже существует');
+                    });
+                } else if (response.status === 400) {
+                    response.text().then(text => {
+                        showError(text || 'Ошибка в данных');
+                    });
+                } else {
+                    showError('Ошибка сервера. Попробуйте позже.');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showError('Ошибка сети. Проверьте подключение к интернету.');
+            });
+        }
+        
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            showSuccess('Вы уже вошли в систему. Перенаправление...');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+
+        document.getElementById('login-form').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitLogin();
+            }
+        });
+        
+        document.getElementById('register-form').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitRegister();
+            }
+        });
+    </script>
+</body>
+</html>
